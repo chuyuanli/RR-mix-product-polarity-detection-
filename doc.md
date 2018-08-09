@@ -96,13 +96,10 @@ $`sent_x \in
 		- perserve of stop words
 		- perserve of punctuation
 	- a grid search is presented and recorded [here](https://docs.google.com/spreadsheets/d/1h0hFaMXubQHRe_z79eKhGRctfgpknq657fMOjkq1jbM/edit#gid=0)
-
 5. Optimization - Negation tag
 	- add the tag NOT_ to every word between a negation word ("not", "isn't", etc) and the first punctuation mark following the negation word (refer to [Das and Chen, 2001](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.202.6418&rep=rep1&type=pdf))
 	- perliminary study indicate that removing the negation tag had a negligible, but yet slightly harmful effect on performance.
 	- study result [here](https://docs.google.com/spreadsheets/d/1h0hFaMXubQHRe_z79eKhGRctfgpknq657fMOjkq1jbM/edit#gid=1908435846)
-
-
 6. **Final Configuration**
       - bigram(1-2)
       - top 10k features
