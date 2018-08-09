@@ -78,9 +78,10 @@ In total 4 phases are presented, scripts and data are included in the folowing 5
 2. Naive Bayes Model
    - python library: sklearn, numpy
    - [Theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem)
-  $$P(A|B) = \frac{P(B|A) P(A)}{P(B)}$$
+  $`P(A|B) = \frac{P(B|A) P(A)}{P(B)}`$
 
 3. the prediction is based on the probability of 2 classes: 
+   
 $$sent_x \in
 \begin{cases}
 	positive & {if P(sent_x | positive) > P(sent_x | negative)}\\negative & otherwise
