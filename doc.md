@@ -82,10 +82,10 @@ In total 4 phases are presented, scripts and data are included in the folowing 5
 
 3. the prediction is based on the probability of 2 classes: 
    
-$sent_x \in
+$`sent_x \in
 \begin{cases}
 	positive & {if P(sent_x | positive) > P(sent_x | negative)}\\negative & otherwise
-\end{cases}$
+\end{cases}`$
 	
 4. Feature Selection
    - the selection of features depends on the following criteria:
