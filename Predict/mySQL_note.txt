@@ -1,0 +1,44 @@
+=====================================================
+table customers_avis_smell: already update tonalite |
+table customers_avis_smell_copy: original data      |
+=====================================================
+
+SELECT `id`, `content` FROM `customers_avis_smell` WHERE 1 LIMIT 0, 100
+SELECT `id`, `content`, `smell_tag` FROM `customers_avis_smell` WHERE 1 LIMIT 0, 10
+(first 10 all positive)
+SELECT `id`, `content`, `smell_tag` FROM `customers_avis_smell` WHERE `smell_tag` is NULL
+(first 30)
+SELECT `id`, `content`, `smell_tag`, `score_pos`, `score_neg` FROM `customers_avis_smell` WHERE 1 LIMIT 0, 30
+SELECT `id`, `content`, `smell_tag`, `score_pos`, `score_neg` FROM `customers_avis_smell_copy` WHERE 1 LIMIT 0, 30
+(select part of a string xxx)
+SELECT `id`, `content` FROM `customers_avis_smell` WHERE content LIKE '%xxx%'
+
+
+
+CREATE A NEW TABLE:
+CREATE TABLE test_smell LIKE customers_avis_smell; 
+INSERT test_smell SELECT `id`, `content`, `smell_tag` FROM customers_avis_smell;
+
+update:
+UPDATE `customers_avis_smell` SET `smell_tag`= NULL WHERE 1
+UPDATE `customers_avis_smell` SET `smell_tag`= NULL, `score_pos` = 'None', `score_neg`= 'None' WHERE 1
+
+
+SELECT `id`, `content` FROM `customers_avis_smell` WHERE `smell_tag` IS NULL ORDER BY `id` LIMIT 0, 10
+
+
+like:
+SELECT `id`, `content`, `smell_tag` FROM `customers_avis_smell` WHERE `smell_tag` LIKE "neg"
+
+random:
+SELECT `id`, `content`, `smell_tag` FROM `customers_avis_smell` WHERE `smell_tag` LIKE "neg" ORDER BY rand() LIMIT 30
+
+
+check if neg+pos = 1:
+SELECT  id, score_pos, score_neg,  ROUND(score_pos + score_neg) addition
+FROM `customers_avis_smell` 
+WHERE ROUND(score_pos + score_neg) != 1
+
+
+http://index-fr.semantiweb.fr:8080/solr/customers_avis_smell/select?q=*:*&fl=content,smell_tag,score_pos,score_neg&facet=true&facet.field=smell_tag
+

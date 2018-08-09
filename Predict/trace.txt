@@ -1,0 +1,44 @@
+----- PARAMATER SETTING ------
+1) Ngram: 1 - 2
+2) Negation tag: True
+3) Language: English
+4) Bernoulli: False
+5) Binary features: False
+6) Stop words: english
+7) Choose top features: 10000
+8) Character length limit of treated sentences: 100
+9) Patch length for each extraction mySQL: 1000
+10) Choose to update the result to mySQL: False
+---- END PARAMATER SETTING ----
+
+LOADING MODELLING PROCESS...
+40000 train sentences read.
+(time for feature transformation = 1.9716 seconds)
+143912 features in total. Consider top 10000 features...
+NB MODEL READY.
+
+PREDICTING PROCESS...
+posts traites 1000
+posts traites 2000
+posts traites 3000
+posts traites 4000
+posts traites 5000
+posts traites 6000
+posts traites 7000
+posts traites 8000
+posts traites 9000
+posts traites 10000
+posts traites 11000
+posts traites 12000
+posts traites 13000
+posts traites 14000
+posts traites 15000
+posts traites 16000
+posts traites 17000
+posts traites 18000
+posts traites 19000
+posts traites 20000
+(time for prediction = 4.7548 seconds)
+
+Fini
+positif posts vs. negatif posts = 13052 vs. 6948

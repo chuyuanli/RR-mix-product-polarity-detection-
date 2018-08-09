@@ -1,0 +1,109 @@
+### ODEUR EN ####
+/LIEN FORMAT\
+index-fr.semantiweb.fr:8080/solr/ratings_reviews_final/select?start=0&rows=1000&q=(sent* odor* flavor* flavour* smack* taste* scent* smell* perfume* fragrance* bad* worse* awful* nauseous* nauseat* overpowering* overwhelming* hate* terrible* strong* unpleasant* dislike* chemical* fake* offensive* disappoint* horrible* horrific* weird* funny* old* odd* gasoline* unnatural* stink* sick* artificial* foul* NOT (price* expensive* nice* bottle* beautiful* great* glitter* wonderful* love* excellent* best* amazing* fresh* packag* good*))
+&fl=id,content,opinion&indent=on&facet=false&fq=country%3A(uk OR usa)&fq=opinion%3A(négatif)&wt=xslt&tr=export_RR.xsl
+
+
+/POS\
+("good taste" scent smell* fragrance* perfume*) NOT ("was sent" "bad taste" "bad scent" "bad smell" "not smell" "doesn't smell" "didn't smell" "bad fragrance" "bad perfume" "too strong smell" "too strong scent" overwhelming overpowering "too present smell" "don't like smell"~2 "not like smell"~2 "don't like scent"~2 "not like scent"~2 "can't stand the smell" "can't stand the scent" "awful scent"~2 "awful smell"~2 "strongly fragranced" "chemical smell" "chemical scent" "sent me" "weird")
+
+
+/NEGATIF\
+("was sent" "bad taste" "bad scent" "bad smell" "not smell" "doesn't smell" "didn't smell" "bad fragrance" "bad perfume" "too strong smell" "too strong scent" overwhelming overpowering "too present smell" "don't like smell"~2 "not like smell"~2 "don't like scent"~2 "not like scent"~2 "can't stand the smell" "can't stand the scent" "awful scent"~2 "awful smell"~2 "strongly fragranced" "chemical smell" "chemical scent" "sent me")
+
+
+/NEG2\
+("bad taste" "bad scent" "bad smell" "not smell" "doesn't smell" "didn't smell" "bad fragrance" "bad perfume" "too strong smell" "too strong scent" overwhelming overpowering "too present smell" "don't like smell"~2 "not like smell"~2 "don't like scent"~2 "not like scent"~2 "can't stand the smell" "can't stand the scent" "awful scent"~2 "awful smell"~2 "strongly fragranced" "chemical smell" "chemical scent") NOT (favorite nice good perfect enjoy* like* love* "doesn't smell awful"~2 "doesn't smell cheap"~4 "doesn't smell fake"~2 "doesn't smell ugly"~2 "doesn't smell bad"~2 "doesn't smell weird"~2 "doesn't smell funny"~2 "doesn't smell terrible"~2 "doesn't smell horrific"~2 "doesn't smell offensive"~2 "doesn't smell chemical*"~3 "doesn't smell girly"~2 "doesn't smell heavily"~2 "doesn't smell like grandma"~2 "doesn't smell like sunscreen" "doesn't smell like alcohol" "doesn't smell like tar" "doesn't smell like typical hairspray"~2 "doesn't smell like regular conditioner"~2 "doesn't smell like over perfumed" "doesn't smell like dirt" "doesn't smell as bad as" "doesn't smell overwhelming"~3 "wasn't overwhelming" "doesn't smell overpowering"~3 "never overwhelming" "isn't overwhelming" "doesn't have chemical"~3 "wasn't overpowering"~3 "isn't over-powering" "not overpowering"~2 "doesn't smell strong"~3 "didn't smell awful"~2 "didn't smell cheap"~4 "didn't smell fake"~2 "didn't smell ugly"~2 "didn't smell bad"~2 "didn't smell weird"~2 "didn't smell funny"~2 "didn't smell terrible"~2 "didn't smell horrific"~2 "didn't smell offensive"~2 "didn't smell chemical*"~3 "didn't smell girly"~2 "didn't smell heavily"~2 "didn't smell like grandma"~2 "didn't smell like suncreen" "didn't smell like alcohol" "didn't smell like tar" "didn't smell like typical hairspray"~2 "didn't smell like regular conditioner"~2 "didn't smell like over perfumed" "didn't smell like dirt" "didn't smell as bad as" "didn't smell overwhelming"~3 "not overwhelming"~3 "didn't smell overpowering"~3 "didn't have chemical"~3 "didn't smell strong"~3 "no chemical smell")
+
+
+
+######## BRUITS ##########
+1. I normally can't stand the smell but...
+2. With some makeup I can't stand the smell but with.. love the smell
+3. I can't stand the scent of orange, and I absolutely love the xxx Orange Blossom
+
+######## NOTES ############
+1. checked odeur neg corpus first 200 comments, "dosen't smell" has a great percentage of error. Most are positive.
+2. "doesn't smell great doesn't smell bad either", probably neutre?
+
+négatif+OR+positif
+
+
+
+====================================================================
+|16/07                                                             |
+|Enlarge nb of posts:                                              |
+|use "highlighting" to choose a certain contents of a post         |
+====================================================================
+
+pos(in all: 1288780, take 25000)
+http://index-fr.semantiweb.fr:8080/solr/ratings_reviews_final/select?start=0&rows=25000&q=("good taste" scent smell* fragrance* perfume*) NOT ("was sent" "bad taste" "bad scent" "bad smell" "not smell" "doesn't smell" "didn't smell" "bad fragrance" "bad perfume" "too strong smell" "too strong scent" overwhelming overpowering "too present smell" "don't like smell"~2 "not like smell"~2 "don't like scent"~2 "not like scent"~2 "can't stand the smell" "can't stand the scent" "awful scent"~2 "awful smell"~2 "strongly fragranced" "chemical smell" "chemical scent" "sent me" "weird")&fl=id,content,opinion&indent=on&facet=false&fq=country:(uk OR usa)&fq=opinion:(négatif OR positif)&hl=on&wt=json
+
+neg(in all:7562, take 7562)
+http://index-fr.semantiweb.fr:8080/solr/ratings_reviews_final/select?start=0&rows=25000&q=("bad taste" "bad scent" "bad smell" "not smell" "doesn't smell" "didn't smell" "bad fragrance" "bad perfume" "too strong smell" "too strong scent" overwhelming overpowering "too present smell" "don't like smell"~2 "not like smell"~2 "don't like scent"~2 "not like scent"~2 "can't stand the smell" "can't stand the scent" "awful scent"~2 "awful smell"~2 "strongly fragranced" "chemical smell" "chemical scent") NOT (favorite nice good perfect enjoy* like* love* amazing* great* "doesn't smell awful"~2 "doesn't smell cheap"~4 "doesn't smell fake"~2 "doesn't smell ugly"~2 "doesn't smell bad"~2 "doesn't smell weird"~2 "doesn't smell funny"~2 "doesn't smell terrible"~2 "doesn't smell horrific"~2 "doesn't smell offensive"~2 "doesn't smell chemical*"~3 "doesn't smell girly"~2 "doesn't smell heavily"~2 "doesn't smell like grandma"~2 "doesn't smell like sunscreen" "doesn't smell like alcohol" "doesn't smell like tar" "doesn't smell like typical hairspray"~2 "doesn't smell like regular conditioner"~2 "doesn't smell like over perfumed" "doesn't smell like dirt" "doesn't smell as bad as" "doesn't smell overwhelming"~3 "wasn't overwhelming" "doesn't smell overpowering"~3 "never overwhelming" "isn't overwhelming" "doesn't have chemical"~3 "wasn't overpowering"~3 "isn't over-powering" "not overpowering"~2 "isn't overpowering"~3 "doesn't smell strong"~3 "didn't smell awful"~2 "didn't smell cheap"~4 "didn't smell fake"~2 "didn't smell ugly"~2 "didn't smell bad"~2 "didn't smell weird"~2 "didn't smell funny"~2 "didn't smell terrible"~2 "didn't smell horrific"~2 "didn't smell offensive"~2 "didn't smell chemical*"~3 "didn't smell girly"~2 "didn't smell heavily"~2 "didn't smell like grandma"~2 "didn't smell like suncreen" "didn't smell like alcohol" "didn't smell like tar" "didn't smell like typical hairspray"~2 "didn't smell like regular conditioner"~2 "didn't smell like over perfumed" "didn't smell like dirt" "didn't smell as bad as" "didn't smell overwhelming"~3 "not overwhelming"~3 "didn't smell overpowering"~3 "didn't have chemical"~3 "didn't smell strong"~3 "no chemical smell")&fl=id,content,opinion&indent=on&facet=false&fq=country:(uk OR usa)&fq=opinion:(négatif OR positif)&hl=on&wt=json
+
+
+check pos: last 200 + middle (13570-13590 lines) + begin 200 OK!
+check neg: first 200 + last 300 (7300-7562)
+
+
+19/07
+==============================================
+neg3: 62108 results: take 25000
+
+(sent* odor* flavor* flavour* smack* taste* scent* smell* perfume* fragrance* bad* worse* awful* nauseous* nauseat* overpowering* overwhelming* hate* terrible* strong* unpleasant* dislike* chemical* fake* offensive* disappoint* horrible* horrific* weird* funny* old* odd* gasoline* unnatural* stink* sick* artificial* foul* NOT (price* expensive* nice* bottle* beautiful* great* glitter* wonderful* love* excellent* best* amazing* fresh* packag* good*))
+
+
+20/07
+==============================================
+
+=== NOM ===
+sent* odor* flavor* flavour* smack* taste* scent* smell* perfume* fragrance*
+
+=== ADJ ===
+bad* worse* awful* nauseous* nauseat* overpowering* overwhelming* hate* terrible* strong* unpleasant* dislike* chemical* fake* offensive* disappoint* horrible* horrific* weird* funny* old* odd* gasoline* unnatural* stink* sick* artificial* foul* NOT (price* expensive* nice* bottle* beautiful* great* glitter* wonderful* love* excellent* best* amazing* fresh* packag* good*)
+
+=== REQUETE ===
+(sent* odor* flavor* flavour* smack* scent* smell* perfume* fragrance*) = 35713 results
+((sent* odor* flavor* flavour* smack* scent* smell* perfume* fragrance*) NOT (amazing* great* wonderful* excellent* love* best* pleasant* neutral* nice* "smells good"~2)) = 25632 results
+((sent* odor* flavor* flavour* smack* scent* smell* perfume* fragrance*) NOT (amazing* great* wonderful* excellent* love* best* pleasant* neutral* nice* good* ok*)) = 19096 results
+
+
+=== NOTES ===
+fl=filed list (fl=id,content,opinion)
+fq=filter query (fq=stars:1.0)
+hl=highlighting (hl=on)
+hl.fragsize = 100 (nb de caracteres)
+wt=writer type (wt=json)
+
+
+!!! FINAL !!!
+http://index-fr.semantiweb.fr:8080/solr/ratings_reviews_final/select?start=0&rows=15002&q=((sent* odor* flavor* flavour* smack* scent* smell* perfume* fragrance*) NOT (amazing* great* wonderful* excellent* love* best* pleasant* neutral* nice* good* ok*))&fl=id,content,opinion&indent=on&fq=(stars:1.0)&facet=false&fq=country:(uk OR usa)&fq=opinion:(négatif)&hl=on&wt=json
+
+
+26/07
+==============================================
+FRANCAIS
+- bonne odeur:
+("bon gout" sent senteur parfum odeur*) NOT ("mauvais gout" "pas de gout" "peu de gout" "zero gout" "aucun gout" "sans gout" "sent pas" "sent peu" "sent mauvais" "mauvaise senteur" "peu de senteur" "zero senteur" "parfum trop fort"~2 "sent fort"~2 ecoeurant* "odeur trop presente"~2 "odeur forte"~3 "aime pas odeur"~3 "aime pas parfum"~3)
+
+http://index-fr.semantiweb.fr:8080/solr/ratings_reviews_final/select?start=0&rows=25002&q=(("bon gout" sent senteur parfum odeur* per fume*) NOT ("mauvais gout" "pas de gout" "peu de gout" "zero gout" "aucun gout" "sans gout" "sent pas" "sent peu" "sent mauvais" "mauvaise senteur" "peu de senteur" "zero senteur" "parfum trop fort"~2 "sent fort"~2 ecoeurant* "odeur trop presente"~2 "odeur forte"~3 "aime pas odeur"~3 "aime pas parfum"~3))&fl=id,content,opinion&indent=on&fq=(stars:5.0)&facet=false&fq=country:(french)&fq=opinion:(positif)&hl=on&wt=xslt&tr=export_RR.xsl
+
+volume: 69k
+
+
+- mauvaise odeur
+("mauvais gout" "pas de gout" "peu de gout" "zero gout" "aucun gout" "sans gout" "sent pas" "sent peu" "sent mauvais" "mauvaise senteur" "peu de senteur" "zero senteur" "parfum trop fort"~2 "sent fort"~2 ecoeurant* "odeur trop presente"~2 "odeur forte"~3 "aime pas odeur"~3 "aime pas parfum"~3 "odeur trop"~3)
+
+volume: 1.8k
+
+
+(gout* sent* parfum* odeur* fragrance* arôme fumet relent) AND (country: french)
+
+1-2 stars volume: 10k (link see below)
+5 stars volume: 82k
+
+http://index-fr.semantiweb.fr:8080/solr/ratings_reviews_final/select?start=0&rows=25002&q=(gout* sent* parfum* odeur* fragrance* arôme fumet relent)&fl=id,content,opinion&indent=on&fq=stars:(1.0 OR 2.0)&facet=false&fq=country:(french)&fq=opinion:(négatif OR neutre)&hl=on&hl.fragsize=100&wt=xslt&tr=export_RR.xsl
+
+
+
