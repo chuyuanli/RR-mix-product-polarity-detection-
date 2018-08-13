@@ -195,7 +195,7 @@ It is also possible to run these python scripts separately:
 - nbPredit.py
 ```
 
-Where all the possible configurations have been clearly indicated, just follow the inscription.
+Where all the possible configurations have been taken care of, follow the instruction will do fine.
 
 
 ## What's next
